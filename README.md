@@ -1,5 +1,11 @@
 ﻿# Tms Library: A Library management system
  
+ ![Screenshot 2024-08-28 171908](https://github.com/user-attachments/assets/7615e160-0e8b-4891-93d3-8e13c5753bea)
+![Screenshot 2024-08-28 171943](https://github.com/user-attachments/assets/8690b140-b1db-4ff5-81b7-ae1060d01880)
+![Screenshot 2024-08-28 172028](https://github.com/user-attachments/assets/973076c5-2725-4513-b9a6-4b4d729eb7f8)
+![Screenshot 2024-08-28 172123](https://github.com/user-attachments/assets/8cb823c5-d0d1-4c8a-a93a-4d3710031fb8)
+
+ 
 ## Overview:
 The Library Management System (LMS) is a multi-user web application that allows librarians to 
 manage sections and e-books and general users to request, and access e-books. The system 
@@ -24,17 +30,29 @@ and generating monthly activity reports.
 
 ### Backend Setup
 1. **Clone the repository:**
-2. ```markdown
+   ```markdown
    git clone https://github.com/tanmay316/Tms-Library-Library-management-system.git
-3. **Navigate to the backend directory:**
+2. **Navigate to the backend directory:**
    ```markdown
    cd backend
-4. **Activate the virtual environment:**
+3. **Activate the virtual environment:**
    ```markdown
    venv\Scripts\activate
-5. **Run the Flask app:**
+4. **Run the Flask app:**
    ```markdown
    flask run or python app.py
+### Running Redis
+1. Start Redis (Ensure you have Redis installed and the redis-server.exe file is available):
+   ```markdown
+   .\redis-server.exe
+
+### Running Celery for Scheduled Tasks
+1. Start the Celery Beat Scheduler:
+   ```markdown
+   celery -A lms.celery beat --loglevel=info
+2. Start the Celery Worker:
+   ```markdown
+   celery -A lms.celery worker --loglevel=debug --concurrency=1 --pool=solo
 
 ### Frontend Setup
 1. Navigate to the frontend directory:
@@ -51,5 +69,5 @@ and generating monthly activity reports.
 The Flask backend will run by default on http://127.0.0.1:5000/.
 The Vue.js frontend will run by default on http://localhost:8080/.
 
-##Contributing:
+## Contributing:
 Contributions are welcome! Please fork this repository and submit a pull request for any improvements.
