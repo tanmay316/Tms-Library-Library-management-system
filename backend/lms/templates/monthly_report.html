@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Monthly Library Report</title>
+</head>
+
+<body>
+    <h1>Monthly Library Report</h1>
+
+    <h2>Sections & E-Books</h2>
+    <ul>
+        {% for section in sections %}
+        <li>{{ section.name }}: {{ section.ebooks | length }} e-books</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Issued E-Books</h2>
+    <ul>
+        {% for request in requests %}
+        <li>{{ request.ebook.title }} issued to {{ request.user.username }} on
+            {{ request.date_granted.strftime('%Y-%m-%d') }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Feedback</h2>
+    <ul>
+        {% for feedback in feedbacks %}
+        <li>{{ feedback.title }} rated an average of {{ feedback.avg_rating | round(1) }} by {{ feedback.username }}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
